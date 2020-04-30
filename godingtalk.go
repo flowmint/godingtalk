@@ -16,8 +16,8 @@ const (
 
 //DingTalkClient is the Client to access DingTalk Open API
 type DingTalkClient struct {
-	AppKey string
-	AppSecret string
+	AppKey      string
+	AppSecret   string
 	AgentID     string
 	PartnerID   string
 	AccessToken string
@@ -110,7 +110,7 @@ func NewDingTalkClient(appKey string, appSecret string) *DingTalkClient {
 	c.HTTPClient = &http.Client{
 		Timeout: 10 * time.Second,
 	}
-	c.Cache = NewFileCache(".auth_file")
+	c.Cache = NewInMemoryCache()
 	return c
 }
 
